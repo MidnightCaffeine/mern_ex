@@ -8,9 +8,9 @@ router.route("/").get((req, res) => {
 });
 
 router.route("/add").post((req, res) => {
-  const { username, password } = req.body;
+  const { userId, password, country, name } = req.body;
 
-  const newUser = new User({ username, password });
+  const newUser = new User({ userId, password, country, name });
 
   newUser
     .save()

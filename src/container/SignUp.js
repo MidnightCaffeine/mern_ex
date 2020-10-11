@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -78,7 +79,12 @@ const SignUp = () => {
           [key]: userInfo[key],
         };
       }, {});
-    if (validInfo.validUid && validInfo.validConfPass && !!userInfo.name.length) {
+    if (
+      validInfo.validUid &&
+      validInfo.validConfPass &&
+      !!userInfo.name.length
+    ) {
+      axios.post("http://localhost:5000/users/add", filteredUserInfo).then((res) => console.log(res.data));
       dispatch(addUserInfo(filteredUserInfo));
       history.push(`/`);
     }

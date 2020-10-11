@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, TextField, Paper } from "@material-ui/core";
@@ -11,7 +12,7 @@ const Login = () => {
   const dispatch = useDispatch();
 
   //Get userData from state
-  const userData = useSelector((state) => state.signup.userData);
+  //const userData = useSelector((state) => state.signup.userData);
 
   const history = useHistory();
   const [loginInfo, setloginInfo] = useState({
@@ -22,6 +23,20 @@ const Login = () => {
       validated: false,
     },
   });
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    // const getuserData = async (url) => {
+    //   const res = await axios.get(url);
+    //   setUserData(res.data);
+    // };
+    axios
+      .get("http://localhost:5000/users/")
+      .then((res) => setUserData(res.data));
+    //getuserData("http://localhost:5000/users/");
+  }, []);
+
+  console.log(userData);
 
   const updateLoginInfo = () => {
     checkLoginData();
@@ -42,7 +57,7 @@ const Login = () => {
           validateLogin: { displayStaus: true, validated: true },
         });
         localStorage.setItem("LoginSucess", loginInfo.validateLogin.validated);
-        dispatch(updateUserId(loginInfo.userId))
+        dispatch(updateUserId(loginInfo.userId));
         history.push("/HomePage");
       }
     });
