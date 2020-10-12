@@ -49,16 +49,21 @@ const HomePage = () => {
   }, []);
 
   const getLoggedInData = () => {
-    const userObj = userData.reduce((acc, data) => {
-      if (data["userId"] === logInData["loggedUser"]) {
-        acc = data;
-      }
-      return acc;
-    }, {});
+    const userObj = userData
+      ? userData.reduce((acc, data) => {
+          if (data["userId"] === logInData["loggedUser"]) {
+            acc = data;
+          }
+          return acc;
+        }, {})
+      : {};
     const curr = Object.keys(countryInfo[0]).find(
       (key) => countryInfo[0][key] === userObj.country
     );
-    return { name: userObj.name, curr: `${curr} - ${userObj.country}` };
+    return {
+      name: userObj.name || "User",
+      curr: `${curr || "OTH"} - ${userObj.country || "--Others--"}`,
+    };
   };
 
   const logout = () => {
