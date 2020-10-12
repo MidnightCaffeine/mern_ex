@@ -1,10 +1,10 @@
-import signup from "./signUpReducer";
 import logInData from "./loginReducer";
+import usersData from "./usersDataReducer";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-  signup,
   logInData,
+  usersData,
 });
 
 export default rootReducer;

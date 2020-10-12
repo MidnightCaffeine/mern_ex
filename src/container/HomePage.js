@@ -31,7 +31,7 @@ const HomePage = () => {
   //Get logIn from state
   const logInData = useSelector((state) => state.logInData);
   //Get userData from state
-  const userData = useSelector((state) => state.signup.userData);
+  const userData = useSelector((state) => state.usersData.userData);
 
   const history = useHistory();
   const [currencyInfo, setCurrencyInfo] = useState({});

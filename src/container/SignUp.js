@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   Select,
   MenuItem,
@@ -16,16 +16,11 @@ import {
 } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import "./styles.scss";
-import { addUserInfo } from "../redux/actions/signupAction";
 const countryInfo = require("../raw/country_list.json");
 // React Component SignUp : Display a signup page and handles user signup validation
 const SignUp = () => {
   //Get userData from state
-  const userData = useSelector((state) => state.signup.userData);
-
-  //Use for all the dispatch actions
-  const dispatch = useDispatch();
-
+  const userData = useSelector((state) => state.usersData.userData);
   const history = useHistory();
   const [userInfo, setuserInfo] = useState({
     password: "",
@@ -84,8 +79,9 @@ const SignUp = () => {
       validInfo.validConfPass &&
       !!userInfo.name.length
     ) {
-      axios.post("http://localhost:5000/users/add", filteredUserInfo).then((res) => console.log(res.data));
-      dispatch(addUserInfo(filteredUserInfo));
+      axios
+        .post("http://localhost:5000/users/add", filteredUserInfo)
+        .then((res) => console.log(res.data));
       history.push(`/`);
     }
   };

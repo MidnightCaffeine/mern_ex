@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, TextField, Paper } from "@material-ui/core";
-import { updateUserId } from "../redux/actions/loginAction";
+import { updateUserId, getUsersData } from "../redux/actions/loginAction";
 import "./styles.scss";
 
 //Renders Login component with login validations
@@ -12,7 +11,7 @@ const Login = () => {
   const dispatch = useDispatch();
 
   //Get userData from state
-  //const userData = useSelector((state) => state.signup.userData);
+  const userData = useSelector((state) => state.usersData.userData);
 
   const history = useHistory();
   const [loginInfo, setloginInfo] = useState({
@@ -23,18 +22,10 @@ const Login = () => {
       validated: false,
     },
   });
-  const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    // const getuserData = async (url) => {
-    //   const res = await axios.get(url);
-    //   setUserData(res.data);
-    // };
-    axios
-      .get("http://localhost:5000/users/")
-      .then((res) => setUserData(res.data));
-    //getuserData("http://localhost:5000/users/");
-  }, []);
+    dispatch(getUsersData());
+  }, [dispatch]);
 
   console.log(userData);
 
