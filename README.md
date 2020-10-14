@@ -1,14 +1,14 @@
 
-## React Redux Hooks Example (Currency converter app)
+## MERN Example (Currency converter app)
 
-* This is a second part of our application.
+* This is a third part of our currency converter application.
 * In the first part [REPO] (https://github.com/MidnightCaffeine/react_router_hooks_ex) we created currency convertor using only react with hooks.
-* This is created using react and redux hooks
-* Uses react router for navigation.
-* Contains Login SignUp and Homepage, relevant state are maintained through redux.
-* Basic validation check has been applied in signup and login.
-* UI elements used using material UI.
-* Some inline styles are there. (to be moved to scss)
+* In the Second part [REPO] (https://github.com/MidnightCaffeine/react_redux_hooks_ex) we created currency convertor using react redux with hooks.
+* In this we have used MERN to create the similar app.
+* M - MongoDb used to Store sign up data
+* E - Express used to Create a service for add and get data from db for signup and login respectively.
+* R - React with Redux (Hooks) is been used for UI (Login, Signup & Homepage)
+* N - Node js not mainly used but will be utilzed for authentication in backend
 -------------------------------------
 * From login page you need to signup. Once signup done you can login.
 * After login it lands to HomePage. Which is a basic currency converter,
@@ -16,6 +16,14 @@
 * Uses Currency Convertor [API] (https://api.exchangeratesapi.io/latest)
 * Logut Button to route back to login page.
 * Contains basic validation in all pages.
+-------------------------------------
+
+#### To start with react app (localhost:3000)
+* From Root Dir first Run [npm install] and then [npm start]
+
+#### To start the server (localhost:5000)
+* From Backend Dir run [npm install], make sure nodemon install globally else run [npm i -g nodemon]
+* Launch server by running the command [nodemon server]
 
 
 ## Some Screenshot from the app 
@@ -47,17 +55,3 @@
 
 
 ---------------------------------------
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
